@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::group(array('prefix' => 'api'), function() {
+	Route::group(array('prefix' => '2014'), function() {
+		Route::resource('salas', 'SalaController');
+
+		Route::resource('ponentes', 'PonenteController');
+
+		Route::resource('actividades', 'ActividadController');
+
+		Route::resource('empresas', 'EmpresaController');
+	});
 });
